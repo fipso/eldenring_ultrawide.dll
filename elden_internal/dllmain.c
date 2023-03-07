@@ -16,12 +16,12 @@ void Init() {
 	PVOID ultrawide = FindPattern(L"eldenring.exe", "\x74\x4f\x45\x8b\x94\xcc", 0);
 	printf("Ultrawide JMP: 0x%p\n", ultrawide);
 
-    DWORD oldprotect;
-    VirtualProtect(ultrawide, 1, PAGE_EXECUTE_READWRITE, &oldprotect);
-    // Replace JE with JNE 
-    char* je = ultrawide;
-    *je = '\x75';
-    VirtualProtect(ultrawide, 1, oldprotect, &oldprotect);
+    	DWORD oldprotect;
+    	VirtualProtect(ultrawide, 1, PAGE_EXECUTE_READWRITE, &oldprotect);
+    	// Replace JE with JNE 
+    	char* je = ultrawide;
+    	*je = '\x75';
+    	VirtualProtect(ultrawide, 1, oldprotect, &oldprotect);
 
 	printf("Patched !");
 }
